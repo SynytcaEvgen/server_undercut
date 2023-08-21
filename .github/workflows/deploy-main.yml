@@ -5,7 +5,7 @@ runs: runs
 on:
   push:
     branches:
-		- development
+	- main
 jobs: 
 	build-deploy:
 		run-on: ubuntu-latest
