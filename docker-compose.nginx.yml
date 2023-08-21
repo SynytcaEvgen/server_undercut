@@ -1,0 +1,20 @@
+version: "3.8"
+networks:
+  apinet:
+    name: apinet
+services:
+  nginx:
+    restart: always
+    container_name: nginx-proxy
+    image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
+    environment :
+      - DOMEN_NAME=${DOMEN_NAME}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/www/letsencrypt/:/data/letsencrypt/:ro
+      - /etc/letsencrypt/:/etc/letsencrypt/:ro
+    networks:
+      - apinet
+    
